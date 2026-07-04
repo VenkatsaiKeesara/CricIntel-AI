@@ -80,3 +80,47 @@ Each dataset will be documented in detail below.
 | Booking_Date | DATE | Date when the booking was made | 2025-04-10 | No |
 | Payment_Method | VARCHAR(20) | Mode of payment | UPI | No |
 | Booking_Status | VARCHAR(20) | Booking status | Confirmed | No |
+
+
+# Business Rules for Synthetic Data Generation
+
+## Match Rules
+
+- Only official IPL teams will be used.
+- Home Team and Away Team cannot be the same.
+- Match Date must belong to the IPL season.
+- Stadium Capacity must equal the sum of VIP, Premium, and Economy capacities.
+
+---
+
+## Customer Rules
+
+- Customer_ID must be unique.
+- Gender values: Male, Female, Other.
+- Age groups:
+  - 18–25
+  - 26–35
+  - 36–45
+  - 46+
+- Registration Date must be before the booking date.
+
+---
+
+## Ticket Sales Rules
+
+- Ticket_ID must be unique.
+- Every booking must reference an existing Match_ID.
+- Every booking must reference an existing Customer_ID.
+- Seat Categories: VIP, Premium, Economy.
+- Maximum tickets per booking: 6.
+- Booking Date must be before Match Date.
+- Ticket Price depends on the seat category.
+- Total Amount = Ticket Price × Quantity.
+- Booking Status: Confirmed or Cancelled.
+- Payment Methods:
+  - UPI
+  - Credit Card
+  - Debit Card
+  - Net Banking
+
+  
