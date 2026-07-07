@@ -1,3 +1,5 @@
+USE CricIntel_AI;
+
 -- Query 1: Verify total matches
 SELECT COUNT(*) AS Total_Matches
 FROM Matches;
@@ -45,15 +47,14 @@ WHERE Customer_ID IS NULL
    OR Last_Name IS NULL
    OR Gender IS NULL
    OR City IS NULL;
-
-
+   
+   
 -- Query 10: Validate Customer foreign key
 SELECT COUNT(*) AS Invalid_Customers
 FROM Ticket_Sales ts
 LEFT JOIN Customers c
 ON ts.Customer_ID = c.Customer_ID
 WHERE c.Customer_ID IS NULL;
-
 
 -- MODULE 2 – Business KPI Queries
 -- Query 11: Calculate total revenue
@@ -292,6 +293,7 @@ GROUP BY
     m.Away_Team
 ORDER BY Tickets_Sold DESC;
 
+
 -- Query 35: Average revenue per match
 SELECT
     ROUND(AVG(Match_Revenue),2) AS Avg_Revenue_Per_Match
@@ -454,11 +456,6 @@ SELECT
     ) AS Cancellation_Rate
 FROM Ticket_Sales;
 
--- Query 50: Revenue lost due to cancellations
-SELECT
-    SUM(Total_Amount) AS Revenue_Lost
-FROM Ticket_Sales
-WHERE Booking_Status='Cancelled';
 
 -- MODULE 6 – Advanced SQL Analytics
 -- Query 51: Rank customers by spending

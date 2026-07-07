@@ -1,3 +1,6 @@
+USE CricIntel_AI
+-- MODULE 1 : DATABASE VALIDATION
+-- =====================================================
 -- Query 1: Verify total matches
 SELECT COUNT(*) AS Total_Matches
 FROM Matches;
@@ -45,8 +48,8 @@ WHERE Customer_ID IS NULL
    OR Last_Name IS NULL
    OR Gender IS NULL
    OR City IS NULL;
-
-
+   
+   
 -- Query 10: Validate Customer foreign key
 SELECT COUNT(*) AS Invalid_Customers
 FROM Ticket_Sales ts
@@ -54,8 +57,8 @@ LEFT JOIN Customers c
 ON ts.Customer_ID = c.Customer_ID
 WHERE c.Customer_ID IS NULL;
 
-
--- MODULE 2 – Business KPI Queries
+-- MODULE 2 : BUSINESS KPI's
+-- =====================================================
 -- Query 11: Calculate total revenue
 SELECT SUM(Total_Amount) AS Total_Revenue
 FROM Ticket_Sales
@@ -124,6 +127,8 @@ SELECT
 FROM Ticket_Sales
 GROUP BY Booking_Status;
 
+-- MODULE 3 : CUSTOMER ANALYTICS
+-- =====================================================
 -- Query 21: Top 10 customers by spending
 SELECT
     Customer_ID,
@@ -175,7 +180,6 @@ WHERE ts.Booking_Status = 'Confirmed'
 GROUP BY c.State
 ORDER BY Total_Revenue DESC;
 
--- MODULE 3 – Customer Analytics
 -- Query 26: Revenue by favorite team
 SELECT
     c.Favorite_Team,
@@ -229,6 +233,7 @@ GROUP BY Registration_Month
 ORDER BY Registration_Month;
 
 -- MODULE 4 – Match Analytics
+-- ====================================
 -- Query 31: Top 10 matches by revenue
 SELECT
     m.Match_ID,
@@ -291,6 +296,7 @@ GROUP BY
     m.Home_Team,
     m.Away_Team
 ORDER BY Tickets_Sold DESC;
+
 
 -- Query 35: Average revenue per match
 SELECT
@@ -379,6 +385,7 @@ ORDER BY Occupancy_Percentage ASC
 LIMIT 10;
 
 -- MODULE 5 – Booking Analytics
+-- =================================
 -- Query 41: Revenue by payment method
 SELECT
     Payment_Method,
@@ -454,13 +461,9 @@ SELECT
     ) AS Cancellation_Rate
 FROM Ticket_Sales;
 
--- Query 50: Revenue lost due to cancellations
-SELECT
-    SUM(Total_Amount) AS Revenue_Lost
-FROM Ticket_Sales
-WHERE Booking_Status='Cancelled';
 
 -- MODULE 6 – Advanced SQL Analytics
+-- =======================================
 -- Query 51: Rank customers by spending
 SELECT
     Customer_ID,
