@@ -1,0 +1,9 @@
+SELECT DATABASE;
+
+SHOW TABLES;
+
+SELECT COUNT(*) FROM Matches;
+
+SELECT COUNT(*) FROM Customers;
+
+SELECT COUNT(*) FROM Ticket_Sales;

@@ -1,0 +1,2 @@
+CREATE DATABASE CricIntel_AI;
+USE CricIntel_AI;
